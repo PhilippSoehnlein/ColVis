@@ -950,7 +950,8 @@ ColVis.prototype = {
 			/* In IE6 if you set the checked attribute of a hidden checkbox, then this is not visually
 			 * reflected. As such, we need to do it here, once it is visible. Unbelievable.
 			 */
-			if ( $.browser && $.browser.msie && $.browser.version == "6.0" )
+			var asMatches = /(msie) ([\w.]+)/.exec( navigator.userAgent.toLowerCase() ) || []; // detect IE6 the same way jquery.migrate does
+			if ( asMatches[1] === 'msie' && asMatches[2] === '6.0' )
 			{
 				that._fnDrawCallback();
 			}
